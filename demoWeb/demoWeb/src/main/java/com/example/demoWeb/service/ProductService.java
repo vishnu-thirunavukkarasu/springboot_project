@@ -30,4 +30,34 @@ public class ProductService {
 	public void addProduct(Product prod) {
 		products.add(prod);
 	}
+
+
+	public void updateProduct(Product prod) {
+		// TODO Auto-generated method stub
+		int index=0;
+		for(int i=0; i<products.size(); i++)
+			if(products.get(i).getProdId() == prod.getProdId())
+				index = i;
+		products.set(index, prod);
+	}
+
+
+	public void deleteProductById(int prodId) {
+		// TODO Auto-generated method stub
+		int index=0;
+		for(int i=0; i<products.size(); i++)
+			if(products.get(i).getProdId() == prodId)
+				index = i;
+		
+		products.remove(index);
+	}
+
+
+
+       
+	
+	
+	
+	
+	
 }
