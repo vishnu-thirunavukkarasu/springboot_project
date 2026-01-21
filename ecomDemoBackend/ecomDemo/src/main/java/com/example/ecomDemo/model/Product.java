@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,12 +29,6 @@ public class Product {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getDesc() {
-		return desc;
-	}
-	public void setDesc(String desc) {
-		this.desc = desc;
 	}
 	public String getBrand() {
 		return brand;
@@ -59,28 +54,59 @@ public class Product {
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-	public boolean isAvailable() {
-		return available;
+	public String getDescription() {
+		return description;
 	}
-	public void setAvailable(boolean available) {
-		this.available = available;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public int getQuantity() {
-		return quantity;
+	public boolean isProductAvailable() {
+		return productAvailable;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setProductAvailable(boolean productAvailable) {
+		this.productAvailable = productAvailable;
+	}
+	public int getStockQuantity() {
+		return stockQuantity;
+	}
+	public void setStockQuantity(int stockQuantity) {
+		this.stockQuantity = stockQuantity;
+	}
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+	public String getImageType() {
+		return imageType;
+	}
+	public void setImageType(String imageType) {
+		this.imageType = imageType;
+	}
+	public byte[] getImageData() {
+		return imageData;
+	}
+	public void setImageData(byte[] imageData) {
+		this.imageData = imageData;
 	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // to auto populate the id for the products , it is the primary id
 	private int id;
 	private String name;
-	private String desc;
+	private String description;
 	private String brand;
 	private BigDecimal price;
 	private String category;
 	private Date releaseDate;
-	private boolean available;
-	private int quantity;
+	private boolean productAvailable;
+	private int stockQuantity;
+	private String imageName;
+	private String imageType;
+	@Lob // for large objects we use lob annotation
+	private byte[] imageData;
+
+	
+	
 	
 }

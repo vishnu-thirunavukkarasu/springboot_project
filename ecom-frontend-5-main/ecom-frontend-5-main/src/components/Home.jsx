@@ -77,17 +77,17 @@ const Home = ({ selectedCategory }) => {
               alignItems: "center",
             }}
           >
-            No Products Available
+            No Products productAvailable
           </h2>
         ) : (
           filteredProducts.map((product) => {
-            const { id, brand, name, price, available, imageUrl } =
+            const { id, brand, name, price, productAvailable, imageUrl } =
               product;
             const cardStyle = {
               width: "18rem",
               height: "12rem",
               boxShadow: "rgba(0, 0, 0, 0.24) 0px 2px 3px",
-              backgroundColor: available ? "#fff" : "#ccc",
+              backgroundColor: productAvailable ? "#fff" : "#ccc",
             };
             return (
               <div
@@ -98,7 +98,7 @@ const Home = ({ selectedCategory }) => {
                   boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
                   borderRadius: "10px",
                   overflow: "hidden",
-                  backgroundColor: available ? "#fff" : "#ccc",
+                  backgroundColor: productAvailable ? "#fff" : "#ccc",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: 'flex-start',
@@ -163,9 +163,9 @@ const Home = ({ selectedCategory }) => {
                         e.preventDefault();
                         addToCart(product);
                       }}
-                      disabled={!available}
+                      disabled={!productAvailable}
                     >
-                      {available ? "Add to Cart" : "Out of Stock"}
+                      {productAvailable ? "Add to Cart" : "Out of Stock"}
                     </button>
                   </div>
                 </Link>
